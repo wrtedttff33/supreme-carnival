@@ -25,6 +25,7 @@ jobs:
         with:
           projectPath: G8Raid
           targetPlatform: Android
+          versioning: None
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
