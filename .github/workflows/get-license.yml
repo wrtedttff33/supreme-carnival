@@ -1,0 +1,16 @@
+name: Get ALF v1
+on: workflow_dispatch
+jobs:
+  get-alf:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: game-ci/unity-request-activation-file@v1
+        id: getALF
+        with:
+          unityVersion: 2022.3.22f1
+      - name: 打印乱码
+        run: |
+          echo "====== 从下面开始复制 ======"
+          base64 ${{ steps.getALF.outputs.filePath }}
+          echo "====== 上面结束复制 ======"
