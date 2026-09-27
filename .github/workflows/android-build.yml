@@ -1,11 +1,9 @@
 name: Build Android APK
-
 on:
   workflow_dispatch:
   push:
     branches:
       - main
-
 jobs:
   build:
     name: Build APK
@@ -13,10 +11,8 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-
       - name: Unzip Project
         run: unzip G8Raid.zip
-
       - name: Build project
         uses: game-ci/unity-builder@v4
         env:
@@ -26,7 +22,6 @@ jobs:
           projectPath: G8Raid
           targetPlatform: Android
           versioning: None
-
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
