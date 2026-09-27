@@ -20,6 +20,7 @@ jobs:
       - name: Build project
         uses: game-ci/unity-builder@v4
         env:
+          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}   # 新增这行
           UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
           UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
         with:
@@ -30,5 +31,5 @@ jobs:
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
-          name: G8Raid
-          path: build/Android/
+          name: G8Raid-APK
+          path: build/Android/*.apk   # 改成了只抓取apk文件
