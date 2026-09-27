@@ -1,0 +1,23 @@
+name: Auto Get Unity License
+
+on:
+  workflow_dispatch:
+
+jobs:
+  activation:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Get License
+        uses: game-ci/unity-request-activation-file@v2
+        id: getManualLicenseFile
+        with:
+          unityVersion: 2022.3.10f1
+
+      - name: Upload
+        uses: actions/upload-artifact@v4
+        with:
+          name: ManualLicenseFile
+          path: ${{ steps.getManualLicenseFile.outputs.filePath }}
