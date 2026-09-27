@@ -1,13 +1,13 @@
-name: 申请许可证
+name: GetMyLicense
 on: workflow_dispatch
 jobs:
-  get-alf:
+  activation:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: game-ci/unity-request-activation-file@v2
+      - uses: game-ci/unity-request-activation-file@v3
         id: getALF
         with:
-          unityVersion: 2022.3.10f1
-      - name: 打印
+          unityVersion: 2022.3.22f1
+      - name: 打印乱码
         run: cat ${{ steps.getALF.outputs.filePath }} | base64
